@@ -5,7 +5,9 @@ const WIDTH = 800;
 const HEIGHT = 600;
 
 class Game extends React.Component {render() {
-    return ()
+    return (
+        <div className="Board" style{{ width: WIDTH, height: HEIGHT}}
+    )
 }}
 
 export default Game;
