@@ -82,9 +82,27 @@ class Game extends React.Component{
         this.setState({ cells: this.makeCells() });
     }
 
+    runGame = () => {
+        this.setState({ isRunning: true});
+        this.runIteration();
+    }
+
+    stopGame = () => {
+        this.setState({ isRunning: false});
+        if(this.timeoutHandler) {
+            window.clearTimeout(this.timeoutHandler);
+            this.timeoutHandler = null;
+        }
+    }
+
+    handleIntervalChange = (event) => {
+        this.setState({interval: event.target.value});
+    }
+
     render() {
-        const {cells} = this.state;
+        const {cells, isRunning} = this.state;
         return(
+            <div>
             <div className="Board"
             style={{ width: WIDTH, height: HEIGHT, backgroundSize: `${CELL_SIZE}px ${CELL_SIZE}px`}}
             onClick={this.handleClick}
@@ -92,6 +110,14 @@ class Game extends React.Component{
             {cells.map(cell => (
                 <Cell x={cell.x} y={cell.y} ley={`${cell.x},${cell.y}`}/>
             ))}
+            </div>
+
+            <div className="controls">
+                Update every <input value={this.state.interval} onChange={this.handleIntervalChange} /> msec
+                {isRunning ?
+                    <button className="button" onClick={this.stopGame}>Stop</button> :
+                    <button className="button" onClick={this.runGame}>Run</button> }
+            </div>
             </div>
         )
     }
