@@ -4,8 +4,9 @@ import './info.css';
 const Info = props => {
     return (
         <div className="info-container">
-            <p>About</p>
-            <p>Rules</p>
+            <h2>About</h2>
+            <p> The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.
+                It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves. It is Turing complete and can simulate a universal constructor or any other Turing machine.</p> 
         </div>
     )
 }
